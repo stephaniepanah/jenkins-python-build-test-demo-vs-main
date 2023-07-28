@@ -38,6 +38,7 @@ pipeline {
 
         stage('Test') {
             steps {
+                sh 'echo "entering Test stage"'
                 sh 'python3 -m pytest'
             }
         }
