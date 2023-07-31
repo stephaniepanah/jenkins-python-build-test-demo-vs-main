@@ -5,11 +5,9 @@ repos:
     -   id: check-yaml
     -   id: end-of-file-fixer
     -   id: trailing-whitespace
-    -   id: check_added_large_files
     -   id: debug-statements
 -   repo: https://github.com/psf/black
-    rev: 22.10.0
+    rev: 23.7.0
     hooks:
     -   id: black
         args: [--safe]
-    

@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        
+
         stage('Pre-commit checks') {
             steps {
                 // Run your pre-commit checks here, for example:
@@ -11,7 +11,7 @@ pipeline {
                 // Add more pre-commit checks as needed
             }
         }
-        
+
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: 'main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vastevenson/pytest-intro-vs.git']]])
@@ -22,13 +22,16 @@ pipeline {
             steps {
                 // Install pre-commit
                 sh 'pip install pre-commit'
+                sh 'pre-commit --version'
 
                 // Run pre-commit checks
-                //sh 'pre-commit run --all-files'
-                sh 'check_added_large_files'
+                sh 'pre-commit run --all-files'
+                sh 'trailing-whitespace'
+                //sh 'check_added_large_files'
+                sh 'debug-statements'
             }
         }
-        
+
         stage('Build') {
             steps {
                 git branch: 'main', url: 'https://github.com/vastevenson/pytest-intro-vs.git'
