@@ -26,9 +26,10 @@ pipeline {
 
                 // Run pre-commit checks
                 sh 'pre-commit run --all-files'
-                sh 'trailing-whitespace'
+                //sh 'trailing-whitespace'
                 //sh 'check_added_large_files'
                 sh 'debug-statements'
+                sh 'post-update'
             }
         }
 
