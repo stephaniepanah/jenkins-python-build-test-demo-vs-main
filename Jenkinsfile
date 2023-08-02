@@ -30,6 +30,7 @@ pipeline {
                 //sh 'check_added_large_files'
                 sh 'debug-statements'
                 sh 'post-update'
+                sh 'check-yaml'
             }
         }
 
